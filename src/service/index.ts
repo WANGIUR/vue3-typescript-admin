@@ -1,12 +1,13 @@
 import WRRquest from './request'
 import { BASE_URL, TIME_OUT } from './request/config'
+import { localCache } from '@/utils'
 
 const wrRquest = new WRRquest({
   baseURL: BASE_URL,
   timeout: TIME_OUT,
   interceptors: {
     requestInterceptor: (config) => {
-      const token = ''
+      const token = localCache.getCache('token')
       if (token) {
         config.headers = {
           ...config.headers,
