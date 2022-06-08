@@ -1,6 +1,6 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import { localCache } from '@/utils'
-import routes from './router-config'
+import routes from './routes-config'
 
 const router = createRouter({
   routes,
