@@ -3,7 +3,7 @@ import {
   accountLoginRequest,
   requestUserInfoById,
   requestUserMenusByRoleId
-} from '@/service/login/login_api'
+} from '@/service/login'
 import { localCache } from '@/utils'
 import router from '@/router'
 import type { ILoginType } from './type'

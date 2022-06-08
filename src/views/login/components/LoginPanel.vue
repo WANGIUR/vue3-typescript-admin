@@ -24,8 +24,11 @@ const handleLoginClick = () => {
 </script>
 
 <template>
-  <div class="login_panel">
-    <h1 class="title rainbow">登录系统</h1>
+  <div class="login-panel">
+    <h1 class="title rainbow">
+      登录系统<el-icon><Platform /></el-icon>
+    </h1>
+    <div class="default-account">账号: coderwhy 密码: 123456</div>
     <el-tabs type="border-card" class="demo-tabs" stretch v-model="curTab">
       <el-tab-pane name="account">
         <template #label>
@@ -46,23 +49,30 @@ const handleLoginClick = () => {
         <LoginPhone ref="phoneRef" />
       </el-tab-pane>
     </el-tabs>
-    <div class="pwd_operate">
+    <div class="pwd-operate">
       <el-checkbox v-model="isKeepPwd">记住密码</el-checkbox>
       <el-link type="primary">忘记密码?</el-link>
     </div>
-    <el-button type="primary" class="login_btn" @click="handleLoginClick"
-      >登录</el-button
-    >
+    <el-button type="primary" class="login-btn" @click="handleLoginClick">
+      登录
+    </el-button>
   </div>
 </template>
 
 <style lang="less" scoped>
-.login_panel {
+.login-panel {
   width: 360px;
   margin-bottom: 240px;
 
   .title {
+    margin-bottom: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .default-account {
     text-align: center;
+    font-size: 12px;
   }
   .demo-tabs .custom-tabs-label .el-icon {
     vertical-align: middle;
@@ -71,13 +81,13 @@ const handleLoginClick = () => {
     vertical-align: middle;
     margin-left: 4px;
   }
-  .pwd_operate {
+  .pwd-operate {
     display: flex;
     justify-content: space-between;
     align-items: center;
     margin: 4px 0;
   }
-  .login_btn {
+  .login-btn {
     width: 100%;
   }
 }

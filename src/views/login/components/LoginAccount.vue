@@ -38,7 +38,7 @@ defineExpose({
 </script>
 
 <template>
-  <div class="login_account">
+  <div class="login-account">
     <el-form :rules="rules" :model="account" status-icon ref="ruleFormRef">
       <el-form-item label-width="60px" label="账号" prop="name">
         <el-input v-model="account.name" />

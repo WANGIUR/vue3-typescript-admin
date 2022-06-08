@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import LoginPanel from './cnps/LoginPanel.vue'
+import LoginPanel from './components/LoginPanel.vue'
 </script>
 
 <template>
@@ -14,6 +14,6 @@ import LoginPanel from './cnps/LoginPanel.vue'
   justify-content: center;
   align-items: center;
   height: 100%;
-  background-image: url('@/assets/images/login-bg.svg');
+  background-image: url('@/assets/svgs/login-bg.svg');
 }
 </style>
