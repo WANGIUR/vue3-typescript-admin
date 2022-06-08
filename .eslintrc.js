@@ -1,7 +1,9 @@
 module.exports = {
   root: true,
   env: {
-    node: true
+    node: true,
+    // 解决 defineEmits、defineProps、defineExpose 未引入报错
+    'vue/setup-compiler-macros': true
   },
   extends: [
     'plugin:vue/vue3-essential',
