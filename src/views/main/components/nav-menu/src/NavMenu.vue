@@ -1,9 +1,18 @@
 <script setup lang="ts">
 import { computed } from 'vue'
+import { useRouter } from 'vue-router'
 import { useStore } from '@/store'
 
 const store = useStore()
+const router = useRouter()
 const userMenus = computed(() => store.state.login.userMenus)
+
+const handleMenuitemClick = (item: any) => {
+  router.push({
+    path: item.url ?? '/not-found'
+  })
+}
+
 defineProps({
   collapse: {
     type: Boolean,
@@ -36,7 +45,10 @@ defineProps({
               <span>{{ item.name }}</span>
             </template>
             <template v-for="subItem in item.children" :key="subItem.id">
-              <el-menu-item :index="subItem.id + ''">
+              <el-menu-item
+                :index="subItem.id + ''"
+                @click="handleMenuitemClick(subItem)"
+              >
                 <span>{{ subItem.name }}</span>
               </el-menu-item>
             </template>

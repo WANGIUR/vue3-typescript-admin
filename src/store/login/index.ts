@@ -6,6 +6,7 @@ import {
 } from '@/service/login'
 import { localCache } from '@/utils'
 import router from '@/router'
+import { mapMenusToRoutes } from '@/utils'
 import type { ILoginType } from './type'
 import type { IRootType } from '../type'
 import type { IAccount } from '@/service/login/type'
@@ -29,6 +30,10 @@ const loginModule: Module<ILoginType, IRootType> = {
     },
     changeUserMenus(state, userMenus: any) {
       state.userMenus = userMenus
+      const routes = mapMenusToRoutes(userMenus)
+      routes.forEach((route) => {
+        router.addRoute('main', route)
+      })
     }
   },
   actions: {
@@ -54,7 +59,7 @@ const loginModule: Module<ILoginType, IRootType> = {
       // 跳转至首页
       router.push('/home')
     },
-    // 手机登录 (接口暂未实现)
+    // 手机登录 (暂未提供相关接口)
     // phoneLoginAction({ commit }, payload: any) {
     //   console.log('payload', payload)
     // }

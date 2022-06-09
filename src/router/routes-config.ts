@@ -3,7 +3,7 @@ import type { RouteRecordRaw } from 'vue-router'
 const routes: RouteRecordRaw[] = [
   {
     path: '/',
-    redirect: '/home'
+    redirect: '/main'
   },
   {
     path: '/login',
@@ -11,9 +11,10 @@ const routes: RouteRecordRaw[] = [
     component: () => import('@/views/login/index.vue')
   },
   {
-    path: '/home',
-    name: 'home',
-    component: () => import('@/views/layout/index.vue')
+    path: '/main',
+    name: 'main',
+    component: () => import('@/views/main/index.vue')
+    // children: [] -> 由userMenus而定
   },
   {
     path: '/:pathMatch(.*)*',

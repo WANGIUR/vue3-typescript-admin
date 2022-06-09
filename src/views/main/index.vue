@@ -3,31 +3,33 @@ import { ref } from 'vue'
 import NavMenu from './components/nav-menu/src/NavMenu.vue'
 import NavHeader from './components/nav-header/src/NavHeader.vue'
 
-const isFoldInLayout = ref(false)
+const isFoldInMain = ref(false)
 
 const foldChange = (isFold: boolean) => {
-  isFoldInLayout.value = isFold
+  isFoldInMain.value = isFold
 }
 </script>
 
 <template>
-  <div class="layout">
+  <div class="main">
     <el-container class="content">
-      <el-aside :width="isFoldInLayout ? '60px' : '210px'" class="aside">
-        <NavMenu :collapse="isFoldInLayout" />
+      <el-aside :width="isFoldInMain ? '60px' : '210px'" class="aside">
+        <NavMenu :collapse="isFoldInMain" />
       </el-aside>
       <el-container class="page">
         <el-header class="page_header">
           <NavHeader @foldChange="foldChange" />
         </el-header>
-        <el-main class="page_main">Main</el-main>
+        <el-main class="page_main">
+          <router-view></router-view>
+        </el-main>
       </el-container>
     </el-container>
   </div>
 </template>
 
 <style lang="less" scoped>
-.layout {
+.main {
   position: fixed;
   top: 0;
   left: 0;
