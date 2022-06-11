@@ -57,7 +57,7 @@ const loginModule: Module<ILoginType, IRootType> = {
       localCache.setCache('userMenus', userMenus)
 
       // 跳转至首页
-      router.push('/home')
+      router.push('/main')
     },
     // 手机登录 (暂未提供相关接口)
     // phoneLoginAction({ commit }, payload: any) {
