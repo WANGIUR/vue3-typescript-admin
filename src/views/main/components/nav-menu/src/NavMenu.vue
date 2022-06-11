@@ -41,7 +41,11 @@ defineProps({
           <el-sub-menu :index="item.id + ''">
             <template #title>
               <!-- 解决接口设计的图标类与当前element+的icon版本不一致的问题 -->
-              <el-icon><ElementPlus /></el-icon>
+              <el-icon v-if="item.id === 38"><Monitor /></el-icon>
+              <el-icon v-else-if="item.id === 1"><Goods /></el-icon>
+              <el-icon v-else-if="item.id === 9"><Setting /></el-icon>
+              <el-icon v-else-if="item.id === 41"><ChatLineSquare /></el-icon>
+              <el-icon v-else><ElementPlus /></el-icon>
               <span>{{ item.name }}</span>
             </template>
             <template v-for="subItem in item.children" :key="subItem.id">
