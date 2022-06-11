@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { ref } from 'vue'
+import UserInfo from './UserInfo.vue'
 
 const isFold = ref(false)
 const emit = defineEmits(['foldChange'])
@@ -16,17 +17,34 @@ const handleFoldClick = () => {
       <Fold v-if="isFold" />
       <Expand v-else />
     </el-icon>
+    <div class="content">
+      <div>面包屑</div>
+      <UserInfo />
+    </div>
   </div>
 </template>
 
 <style lang="less" scoped>
 .nav-header {
+  width: 100%;
   display: flex;
-  align-items: center;
 
   .fold-icon {
     font-size: 30px;
     cursor: pointer;
+  }
+
+  .content {
+    flex: 1;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-left: 10px;
+
+    .user-info {
+      display: flex;
+      align-items: center;
+    }
   }
 }
 </style>
