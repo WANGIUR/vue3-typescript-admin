@@ -21,7 +21,9 @@ const foldChange = (isFold: boolean) => {
           <NavHeader @foldChange="foldChange" />
         </el-header>
         <el-main class="page_main">
-          <router-view></router-view>
+          <div class="page_main_info">
+            <router-view></router-view>
+          </div>
         </el-main>
       </el-container>
     </el-container>
@@ -62,6 +64,11 @@ const foldChange = (isFold: boolean) => {
       color: #333;
       text-align: center;
       background-color: #f0f2f5;
+
+      &_info {
+        background-color: #fff;
+        border-radius: 4px;
+      }
     }
   }
 }
