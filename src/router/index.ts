@@ -1,5 +1,5 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import { localCache } from '@/utils'
+import { localCache, firstMenu } from '@/utils'
 import routes from './routes-config'
 
 const router = createRouter({
@@ -18,6 +18,10 @@ router.beforeEach((to) => {
   // 调试二级路有刷新时跳转至not-found页面
   console.log(router.getRoutes())
   console.log(to) // to匹配的是not-founds
+
+  if (to.path === '/main') {
+    return firstMenu.url
+  }
 })
 
 export default router

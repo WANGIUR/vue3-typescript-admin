@@ -1,11 +1,18 @@
 <script setup lang="ts">
-import { computed } from 'vue'
-import { useRouter } from 'vue-router'
+import { computed, ref } from 'vue'
+import { useRouter, useRoute } from 'vue-router'
 import { useStore } from '@/store'
+import { pathMapToMenu } from '@/utils'
 
 const store = useStore()
 const router = useRouter()
+const route = useRoute()
 const userMenus = computed(() => store.state.login.userMenus)
+
+// 刷新当前路由保持菜单选中状态
+const currentPath = route.path
+const menu = pathMapToMenu(userMenus.value, currentPath)
+const defaultActive = ref(menu.id + '')
 
 defineProps({
   collapse: {
@@ -28,7 +35,7 @@ const handleMenuitemClick = (item: any) => {
       <span class="title" v-if="!collapse">Vue3&TS</span>
     </div>
     <el-menu
-      default-active=""
+      :default-active="defaultActive"
       :unique-opened="true"
       :collapse="collapse"
       class="el-menu-vertical"
