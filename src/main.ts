@@ -5,7 +5,7 @@ import { setupStore } from './store'
 import '@/styles/index.less'
 
 const app = createApp(App)
-app.use(globalRegisterFn)
 // 初始store数据
 setupStore()
+app.use(globalRegisterFn)
 app.mount('#app')

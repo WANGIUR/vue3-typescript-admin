@@ -14,6 +14,10 @@ router.beforeEach((to) => {
       return '/login'
     }
   }
+
+  // 调试二级路有刷新时跳转至not-found页面
+  console.log(router.getRoutes())
+  console.log(to) // to匹配的是not-founds
 })
 
 export default router
