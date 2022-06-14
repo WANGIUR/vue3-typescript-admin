@@ -7,18 +7,18 @@ const store = useStore()
 const router = useRouter()
 const userMenus = computed(() => store.state.login.userMenus)
 
-const handleMenuitemClick = (item: any) => {
-  router.push({
-    path: item.url ?? '/not-found'
-  })
-}
-
 defineProps({
   collapse: {
     type: Boolean,
     default: false
   }
 })
+
+const handleMenuitemClick = (item: any) => {
+  router.push({
+    path: item.url ?? '/not-found'
+  })
+}
 </script>
 
 <template>

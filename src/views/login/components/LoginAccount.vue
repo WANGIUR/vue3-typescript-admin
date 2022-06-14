@@ -13,6 +13,10 @@ const account = reactive({
 const rules = reactive(loginAccRules)
 const ruleFormRef = ref<FormInstance>()
 
+defineExpose({
+  loginAction
+})
+
 const loginAction = (isKeepPwd: boolean) => {
   ruleFormRef.value?.validate((valid) => {
     if (valid) {
@@ -31,10 +35,6 @@ const loginAction = (isKeepPwd: boolean) => {
     }
   })
 }
-
-defineExpose({
-  loginAction
-})
 </script>
 
 <template>
