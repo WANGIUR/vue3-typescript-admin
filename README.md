@@ -1,10 +1,10 @@
-# 🎉 vue3-typescript-admin
+# <center>🎉 vue3-typescript-admin</center>
 
 > A lightweight admin, for learning Vue3、Composition API and TypeScript
 
-### Features
+### features
 
-- Based on Vue3 and TypeScript
+- Based on Vue3.2 and TypeScript
 - Integrated Vue Router、 Vuex、Element+ etc
 
 ### Prepare
@@ -15,27 +15,43 @@ If you use [VS Code](https://code.visualstudio.com/)，please install the follow
 - [Prettier - Code formatter](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode)
 - [ESLint](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint)
 
-### Project setup
+### Setup
 
 ```
+// npm
+npm install
+
+// yarn
 yarn install
 ```
 
-### Compiles and hot-reloads for development
+### Compiles
 
 ```
+// npm
+npm run serve
+
+// yarn
 yarn serve
 ```
 
-### Compiles and minifies for production
+### Build
 
 ```
+// npm
+npm run build
+
+// yarn
 yarn build
 ```
 
-### Lints and fixes files
+### Lints
 
 ```
+// npm
+npm run lint
+
+// yarn
 yarn lint
 ```
 
@@ -43,4 +59,12 @@ yarn lint
 
 See [Configuration Reference](https://cli.vuejs.org/config/).
 
-### Look forward to Your ⭐️ , thanks ！
+### Declaration
+
+Backend API from [coderwhy](https://github.com/coderwhy), thank him for his support
+
+### Communication
+
+QQ Name: Jeff
+
+QQ Num: 281413395
