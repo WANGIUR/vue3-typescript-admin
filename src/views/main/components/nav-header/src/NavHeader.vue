@@ -1,14 +1,26 @@
 <script setup lang="ts">
-import { ref } from 'vue'
+import { ref, computed } from 'vue'
+import { useStore } from '@/store'
+import { useRoute } from 'vue-router'
 import UserInfo from './UserInfo.vue'
+import WrBreadcrumb, { IBreadcrumb } from '@/components/breadcrumb'
+import { pathMapToBreadcrumbs } from '@/utils'
 
 const isFold = ref(false)
+const store = useStore()
+const userMenus = computed(() => store.state.login.userMenus)
 const emit = defineEmits(['foldChange'])
 
 const handleFoldClick = () => {
   isFold.value = !isFold.value
   emit('foldChange', isFold.value)
 }
+
+// 面包屑
+const breadcrumbs = computed(() => {
+  const route = useRoute()
+  return pathMapToBreadcrumbs(userMenus.value, route.path)
+})
 </script>
 
 <template>
@@ -18,7 +30,7 @@ const handleFoldClick = () => {
       <Expand v-else />
     </el-icon>
     <div class="content">
-      <div>面包屑</div>
+      <WrBreadcrumb :breadcrumbs="breadcrumbs" />
       <UserInfo />
     </div>
   </div>
