@@ -32,6 +32,13 @@ const systemModule: Module<ISystemType, IRootType> = {
       state.roleCount = roleCount
     }
   },
+  getters: {
+    pageListData(state) {
+      return (pageName: string) => {
+        return (state as any)[`${pageName}List`]
+      }
+    }
+  },
   actions: {
     // user页面数据请求
     async getPageListAction({ commit }, payload: any) {

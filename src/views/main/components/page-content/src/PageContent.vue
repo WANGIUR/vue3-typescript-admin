@@ -23,29 +23,36 @@ store.dispatch('system/getPageListAction', {
   }
 })
 
-const userList = computed(() => store.state.system.userList)
-const userCount = computed(() => store.state.system.userCount)
+const listData = computed(() =>
+  store.getters[`system/pageListData`](props.pageName)
+)
+// const userCount = computed(() => store.state.system.userCount)
 
 const selectionChange = (value: any) => {
   // 支持选中后进行 导出/删除 等类似扩展操作
   // console.log(value)
 }
 
-const handleAddUser = () => {
-  console.log('first')
+const handleNewCreate = () => {
+  console.log('handleAddUser')
 }
 </script>
 
 <template>
   <div class="page-content">
     <WrTabel
-      :listData="userList"
+      :listData="listData"
       v-bind="contentTableConfig"
       @selectionChange="selectionChange"
     >
       <template #handler>
-        <el-button type="primary" size="small" @click="handleAddUser">
-          新增用户
+        <el-button
+          type="primary"
+          size="small"
+          @click="handleNewCreate"
+          :icon="contentTableConfig.handlerBtnIcon"
+        >
+          {{ contentTableConfig.handlerBtnName }}
         </el-button>
       </template>
       <template #enable="scope">
@@ -76,6 +83,6 @@ const handleAddUser = () => {
 <style lang="less" scoped>
 .page-content {
   padding: 10px;
-  border-top: 20px solid #f5f5f5;
+  border-top: 20px solid #f0f2f5;
 }
 </style>
