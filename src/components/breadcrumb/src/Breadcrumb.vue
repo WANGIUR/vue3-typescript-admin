@@ -11,7 +11,7 @@ defineProps({
 </script>
 
 <template>
-  <div class="nav-breadcrumb">
+  <div class="wr-nav-breadcrumb">
     <el-breadcrumb separator="/">
       <template v-for="item in breadcrumbs" :key="item.name">
         <el-breadcrumb-item :to="{ path: item.path ? item.path : '' }">

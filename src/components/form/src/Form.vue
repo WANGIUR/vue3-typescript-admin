@@ -42,7 +42,7 @@ watch(formData, (newValue) => emit('update:modelValue', newValue), {
 
 <template>
   <div class="wr-form">
-    <div class="header">
+    <div class="wr-form-header">
       <slot name="header"></slot>
     </div>
     <el-form :label-width="labelWidth">
@@ -86,7 +86,7 @@ watch(formData, (newValue) => emit('update:modelValue', newValue), {
         </template>
       </el-row>
     </el-form>
-    <div class="footer">
+    <div class="wr-form-footer">
       <slot name="footer"></slot>
     </div>
   </div>
