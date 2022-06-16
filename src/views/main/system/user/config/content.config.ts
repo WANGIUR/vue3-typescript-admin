@@ -1,5 +1,7 @@
 export const contentTableConfig = {
   title: '用户列表',
+  handlerBtnName: '新增',
+  handlerBtnIcon: 'Plus',
   propList: [
     {
       prop: 'name',
@@ -22,19 +24,19 @@ export const contentTableConfig = {
     {
       prop: 'enable',
       label: '状态',
-      minWidth: '60',
+      minWidth: '80',
       slotName: 'enable'
     },
     {
       prop: 'createAt',
       label: '创建时间',
-      minWidth: '150',
+      minWidth: '180',
       slotName: 'createAt'
     },
     {
       prop: 'updateAt',
       label: '更新时间',
-      minWidth: '150',
+      minWidth: '180',
       slotName: 'updateAt'
     },
     {

@@ -14,8 +14,8 @@ export const searchFormConfig: IForm = {
     {
       field: 'id',
       type: 'input',
-      label: 'id',
-      placeholder: '请输入',
+      label: '用户id',
+      placeholder: '请输入用户id',
       otherOptions: {
         size: 'small'
       }
@@ -24,29 +24,25 @@ export const searchFormConfig: IForm = {
       field: 'name',
       type: 'input',
       label: '用户名',
-      placeholder: '请输入',
+      placeholder: '请输入用户名',
       otherOptions: {
         size: 'small'
       }
     },
     {
-      field: 'password',
-      type: 'password',
-      label: '密码',
-      placeholder: '请输入',
+      field: 'realname',
+      type: 'input',
+      label: '真实姓名',
+      placeholder: '请输入真实姓名',
       otherOptions: {
         size: 'small'
       }
     },
     {
-      field: 'sport',
-      type: 'select',
-      label: '下拉选择',
-      placeholder: '请选择',
-      options: [
-        { value: 'op1', label: 'op1' },
-        { value: 'op2', label: 'op2' }
-      ],
+      field: 'cellphone',
+      type: 'input',
+      label: '电话号码',
+      placeholder: '请输入电话号码',
       otherOptions: {
         size: 'small'
       }
