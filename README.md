@@ -2,7 +2,7 @@
 
 > A lightweight admin, for learning💪 Vue3、Composition API and TypeScript
 
-### features
+### Features
 
 - Based on Vue3.2 and TypeScript
 - Integrated Vue Router、 Vuex、Element+ etc
