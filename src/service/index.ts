@@ -2,7 +2,7 @@ import WRRquest from './request'
 import { BASE_URL, TIME_OUT } from './request/config'
 import { localCache } from '@/utils'
 
-const wrRquest = new WRRquest({
+const WrRquest = new WRRquest({
   baseURL: BASE_URL,
   timeout: TIME_OUT,
   interceptors: {
@@ -27,4 +27,4 @@ const wrRquest = new WRRquest({
     }
   }
 })
-export default wrRquest
+export default WrRquest

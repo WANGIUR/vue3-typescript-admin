@@ -69,7 +69,7 @@ class WRRquest {
   }
 
   // 单个请求已实现请求和响应进行拦截
-  request<T>(config: WRRequestConfig<T>): Promise<T> {
+  request<T = any>(config: WRRequestConfig<T>): Promise<T> {
     return new Promise((resolve, reject) => {
       if (config.interceptors?.requestInterceptor) {
         config = config.interceptors.requestInterceptor(config)
@@ -97,19 +97,19 @@ class WRRquest {
     })
   }
 
-  get<T>(config: WRRequestConfig<T>): Promise<T> {
+  get<T = any>(config: WRRequestConfig<T>): Promise<T> {
     return this.request<T>({ ...config, method: 'GET' })
   }
 
-  post<T>(config: WRRequestConfig<T>): Promise<T> {
+  post<T = any>(config: WRRequestConfig<T>): Promise<T> {
     return this.request<T>({ ...config, method: 'POST' })
   }
 
-  delete<T>(config: WRRequestConfig<T>): Promise<T> {
+  delete<T = any>(config: WRRequestConfig<T>): Promise<T> {
     return this.request<T>({ ...config, method: 'DELETE' })
   }
 
-  patch<T>(config: WRRequestConfig<T>): Promise<T> {
+  patch<T = any>(config: WRRequestConfig<T>): Promise<T> {
     return this.request<T>({ ...config, method: 'PATCH' })
   }
 }

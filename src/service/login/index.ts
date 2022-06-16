@@ -1,5 +1,6 @@
-import wrRquest from '../index'
-import type { IAccount, IDataType, ILoginResType } from './type'
+import WrRquest from '../index'
+import type { IAccount, ILoginResType } from './type'
+import type { IDataType } from '../type'
 
 enum LoginAPI {
   AccountLogin = '/login',
@@ -8,21 +9,21 @@ enum LoginAPI {
 }
 
 export function accountLoginRequest(account: IAccount) {
-  return wrRquest.post<IDataType<ILoginResType>>({
+  return WrRquest.post<IDataType<ILoginResType>>({
     url: LoginAPI.AccountLogin,
     data: account
   })
 }
 
 export function requestUserInfoById(id: number) {
-  return wrRquest.get<IDataType>({
+  return WrRquest.get<IDataType>({
     url: LoginAPI.LoginUserInfo + id,
     showLoading: false
   })
 }
 
 export function requestUserMenusByRoleId(id: number) {
-  return wrRquest.get<IDataType>({
+  return WrRquest.get<IDataType>({
     url: LoginAPI.UserMenus + id + '/menu',
     showLoading: false
   })
