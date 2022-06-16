@@ -95,5 +95,9 @@ watch(formData, (newValue) => emit('update:modelValue', newValue), {
 <style lang="less" scoped>
 .wr-form {
   padding-top: 10px;
+
+  /deep/.wr-form-datepicker {
+    padding: 0 10px !important;
+  }
 }
 </style>
