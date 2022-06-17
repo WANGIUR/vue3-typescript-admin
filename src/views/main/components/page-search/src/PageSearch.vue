@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import { ref } from 'vue'
-import { Refresh, Search } from '@element-plus/icons-vue'
 import WrForm from '@/components/form'
 
 defineProps({

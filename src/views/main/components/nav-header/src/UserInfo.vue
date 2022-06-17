@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import { computed } from '@vue/reactivity'
-import { UserFilled } from '@element-plus/icons-vue'
 import { useStore } from '@/store'
 import { useRouter } from 'vue-router'
 import { localCache } from '@/utils'
