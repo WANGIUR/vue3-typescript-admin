@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { ref } from 'vue'
+import { Search, Refresh } from '@element-plus/icons-vue'
 import WrForm from '@/components/form'
 
 const props = defineProps({
@@ -9,7 +10,9 @@ const props = defineProps({
   }
 })
 
-// 优化一：formData中的属性应该动态决定
+const emit = defineEmits(['resetBtnClick', 'searchBtnClick'])
+
+// 动态决定formData中的属性
 const formItems = props.searchFormConfig?.formItems ?? []
 const formOriginData: any = {}
 for (const item of formItems) {
@@ -18,9 +21,15 @@ for (const item of formItems) {
 
 const formData = ref(formOriginData)
 
-// 优化二：当用户点击重置
-const handleResetClcik = () => {
+// reset
+const handleResetClick = () => {
   formData.value = formOriginData
+  emit('resetBtnClick')
+}
+
+// search
+const handleSearchClick = () => {
+  emit('searchBtnClick', formData.value)
 }
 </script>
 
@@ -29,10 +38,16 @@ const handleResetClcik = () => {
     <WrForm v-bind="searchFormConfig" v-model="formData">
       <template #footer>
         <div class="search-form-btns">
-          <el-button :icon="Refresh" size="small" @click="handleResetClcik">
+          <el-button :icon="Refresh" size="small" @click="handleResetClick">
             重置
           </el-button>
-          <el-button type="primary" :icon="Search" size="small">搜索</el-button>
+          <el-button
+            type="primary"
+            :icon="Search"
+            size="small"
+            @click="handleSearchClick"
+            >搜索</el-button
+          >
         </div>
       </template>
     </WrForm>

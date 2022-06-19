@@ -48,7 +48,20 @@ export const searchFormConfig: IForm = {
       }
     },
     {
-      field: 'createTime',
+      field: 'enable',
+      type: 'select',
+      label: '用户状态',
+      placeholder: '请选择用户状态',
+      options: [
+        { label: '启用', value: 1 },
+        { label: '禁用', value: 0 }
+      ],
+      otherOptions: {
+        size: 'small'
+      }
+    },
+    {
+      field: 'createAt',
       type: 'datepicker',
       label: '创建时间',
       otherOptions: {

@@ -15,13 +15,18 @@ const props = defineProps({
   }
 })
 
-store.dispatch('system/getPageListAction', {
-  pageName: props.pageName,
-  queryInfo: {
-    offset: 0,
-    size: 10
-  }
-})
+const getPageData = (queryInfo: any = {}) => {
+  store.dispatch('system/getPageListAction', {
+    pageName: props.pageName,
+    queryInfo: {
+      offset: 0,
+      size: 10,
+      ...queryInfo
+    }
+  })
+}
+
+getPageData()
 
 const listData = computed(() =>
   store.getters[`system/pageListData`](props.pageName)
@@ -30,12 +35,16 @@ const listData = computed(() =>
 
 const selectionChange = (value: any) => {
   // 支持选中后进行 导出/删除 等类似扩展操作
-  // console.log(value)
+  console.log(value)
 }
 
 const handleNewCreate = () => {
   console.log('handleAddUser')
 }
+
+defineExpose({
+  getPageData
+})
 </script>
 
 <template>
