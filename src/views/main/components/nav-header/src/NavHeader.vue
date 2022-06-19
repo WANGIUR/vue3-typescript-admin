@@ -3,7 +3,7 @@ import { ref, computed } from 'vue'
 import { useStore } from '@/store'
 import { useRoute } from 'vue-router'
 import UserInfo from './UserInfo.vue'
-import WrBreadcrumb, { IBreadcrumb } from '@/components/breadcrumb'
+import WrBreadcrumb from '@/components/breadcrumb'
 import { pathMapToBreadcrumbs } from '@/utils'
 
 const isFold = ref(false)

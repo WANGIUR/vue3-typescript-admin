@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { PropType, ref, watch } from 'vue'
+import { PropType } from 'vue'
 import type { IFormItem } from '../type'
 
 const props = defineProps({
