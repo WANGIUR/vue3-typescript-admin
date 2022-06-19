@@ -34,10 +34,14 @@ const props = defineProps({
 const emit = defineEmits(['update:modelValue'])
 
 // 基于组件的v-model实现数据的双向绑定
-const formData = ref({ ...props.modelValue })
-watch(formData, (newValue) => emit('update:modelValue', newValue), {
-  deep: true
-})
+// const formData = ref({ ...props.modelValue })
+// watch(formData, (newValue) => emit('update:modelValue', newValue), {
+//   deep: true
+// })
+
+const handleValueChange = (newVal: any, field: string) => {
+  emit('update:modelValue', { ...props.modelValue, [field]: newVal })
+}
 </script>
 
 <template>
@@ -57,7 +61,8 @@ watch(formData, (newValue) => emit('update:modelValue', newValue), {
                   :placeholder="item.placeholder"
                   :show-password="item.type === 'password'"
                   v-bind="item.otherOptions"
-                  v-model="formData[`${item.field}`]"
+                  :modelValue="modelValue[`${item.field}`]"
+                  @update:modelValue="handleValueChange($event, item.field)"
                 />
               </template>
               <template v-else-if="item.type === 'select'">
@@ -65,7 +70,8 @@ watch(formData, (newValue) => emit('update:modelValue', newValue), {
                   :placeholder="item.placeholder"
                   v-bind="item.otherOptions"
                   style="width: 100%"
-                  v-model="formData[`${item.field}`]"
+                  :modelValue="modelValue[`${item.field}`]"
+                  @update:modelValue="handleValueChange($event, item.field)"
                 >
                   <el-option
                     v-for="option in item.options"
@@ -77,8 +83,10 @@ watch(formData, (newValue) => emit('update:modelValue', newValue), {
               </template>
               <template v-else-if="item.type === 'datepicker'">
                 <el-date-picker
+                  class="wr-form-datepicker"
                   v-bind="item.otherOptions"
-                  v-model="formData[`${item.field}`]"
+                  :modelValue="modelValue[`${item.field}`]"
+                  @update:modelValue="handleValueChange($event, item.field)"
                 ></el-date-picker>
               </template>
             </el-form-item>

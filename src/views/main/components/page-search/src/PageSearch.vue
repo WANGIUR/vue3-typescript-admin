@@ -2,20 +2,26 @@
 import { ref } from 'vue'
 import WrForm from '@/components/form'
 
-defineProps({
+const props = defineProps({
   searchFormConfig: {
     type: Object,
     required: true
   }
 })
 
-const formData = ref({
-  id: '',
-  name: '',
-  password: '',
-  sport: '',
-  createTime: ''
-})
+// 优化一：formData中的属性应该动态决定
+const formItems = props.searchFormConfig?.formItems ?? []
+const formOriginData: any = {}
+for (const item of formItems) {
+  formOriginData[item.field] = ''
+}
+
+const formData = ref(formOriginData)
+
+// 优化二：当用户点击重置
+const handleResetClcik = () => {
+  formData.value = formOriginData
+}
 </script>
 
 <template>
@@ -23,7 +29,9 @@ const formData = ref({
     <WrForm v-bind="searchFormConfig" v-model="formData">
       <template #footer>
         <div class="search-form-btns">
-          <el-button :icon="Refresh" size="small">重置</el-button>
+          <el-button :icon="Refresh" size="small" @click="handleResetClcik">
+            重置
+          </el-button>
           <el-button type="primary" :icon="Search" size="small">搜索</el-button>
         </div>
       </template>
