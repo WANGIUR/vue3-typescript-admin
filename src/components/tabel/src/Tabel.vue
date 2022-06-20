@@ -1,5 +1,5 @@
 <script setup lang="ts">
-defineProps({
+const props = defineProps({
   title: {
     type: String,
     default: ''
@@ -16,16 +16,32 @@ defineProps({
     type: Array,
     required: true
   },
+  listCount: {
+    type: Number,
+    default: 0
+  },
   propList: {
     type: Array,
     required: true
+  },
+  page: {
+    type: Object,
+    default: () => ({ currentPage: 0, pageSize: 10 })
   }
 })
 
-const emit = defineEmits(['selectionChange'])
+const emit = defineEmits(['selectionChange', 'update:page'])
 
 const handleSelectionChange = (value: any) => {
   emit('selectionChange', value)
+}
+
+const handleSizeChange = (pageSize: number) => {
+  emit('update:page', { ...props.page, pageSize })
+}
+
+const handleCurrentChange = (currentPage: number) => {
+  emit('update:page', { ...props.page, currentPage })
 }
 </script>
 
@@ -59,7 +75,7 @@ const handleSelectionChange = (value: any) => {
         width="60"
       ></el-table-column>
       <template v-for="propItem in propList" :key="propItem.prop">
-        <el-table-column v-bind="propItem" align="center">
+        <el-table-column v-bind="propItem" align="center" show-overflow-tooltip>
           <template #default="scope">
             <slot :name="propItem.slotName" :row="scope.row">
               {{ scope.row[propItem.prop] }}
@@ -71,14 +87,14 @@ const handleSelectionChange = (value: any) => {
     <div class="wr-tabel-footer">
       <slot name="footer">
         <el-pagination
-          v-model:currentPage="currentPage4"
-          v-model:page-size="pageSize4"
-          :page-sizes="[100, 200, 300, 400]"
-          :small="small"
-          :disabled="disabled"
-          :background="background"
+          :current-page="page.currentPage"
+          :page-size="page.pageSize"
+          :page-sizes="[5, 10, 20, 40]"
+          small
+          :disabled="false"
+          :background="true"
           layout="total, sizes, prev, pager, next, jumper"
-          :total="400"
+          :total="listCount"
           @size-change="handleSizeChange"
           @current-change="handleCurrentChange"
         />
