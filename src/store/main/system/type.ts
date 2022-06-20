@@ -3,4 +3,6 @@ export interface ISystemType {
   userCount: number
   roleList: any[]
   roleCount: number
+  goodsList: any[]
+  goodsCount: number
 }

@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { computed } from 'vue'
+import { computed, ref, watch } from 'vue'
 import WrTabel from '@/components/tabel'
 import { useStore } from '@/store'
 
@@ -15,32 +15,55 @@ const props = defineProps({
   }
 })
 
+const pageInfo = ref({ pageSize: 10, currentPage: 1 })
+watch(pageInfo, () => {
+  getPageData()
+})
+
 const getPageData = (queryInfo: any = {}) => {
   store.dispatch('system/getPageListAction', {
     pageName: props.pageName,
     queryInfo: {
-      offset: 0,
-      size: 10,
+      offset:
+        pageInfo.value.currentPage === 1
+          ? pageInfo.value.currentPage - 1
+          : (pageInfo.value.currentPage - 1) * pageInfo.value.pageSize,
+      size: pageInfo.value.pageSize,
       ...queryInfo
     }
   })
 }
 
+// 初始页面
 getPageData()
 
 const listData = computed(() =>
   store.getters[`system/pageListData`](props.pageName)
 )
-// const userCount = computed(() => store.state.system.userCount)
+const listCount = computed(() =>
+  store.getters[`system/pageListCount`](props.pageName)
+)
 
+// 表格行选中后获取数据可进行 导出/删除 等类似扩展操作
 const selectionChange = (value: any) => {
-  // 支持选中后进行 导出/删除 等类似扩展操作
   console.log(value)
 }
 
+// 新增
 const handleNewCreate = () => {
   console.log('handleAddUser')
 }
+
+// 获取需要动态插槽的名称
+const dynamicPropSlots = props.contentTableConfig?.propList.filter(
+  (item: any) => {
+    if (item.slotName === 'handler') return false
+    if (item.slotName === 'createAt') return false
+    if (item.slotName === 'updateAt') return false
+    if (item.slotName === 'operate') return false
+    return true
+  }
+)
 
 defineExpose({
   getPageData
@@ -51,7 +74,9 @@ defineExpose({
   <div class="page-content">
     <WrTabel
       :listData="listData"
+      :listCount="listCount"
       v-bind="contentTableConfig"
+      v-model:page="pageInfo"
       @selectionChange="selectionChange"
     >
       <template #handler>
@@ -62,15 +87,6 @@ defineExpose({
           :icon="contentTableConfig.handlerBtnIcon"
         >
           {{ contentTableConfig.handlerBtnName }}
-        </el-button>
-      </template>
-      <template #enable="scope">
-        <el-button
-          size="small"
-          plain
-          :type="scope.row.enable ? 'success' : 'danger'"
-        >
-          {{ scope.row.enable ? '启用' : '禁用' }}
         </el-button>
       </template>
       <template #createAt="scope">
@@ -84,6 +100,17 @@ defineExpose({
           <el-button link size="small" icon="Edit">编辑</el-button>
           <el-button link size="small" icon="Delete">删除</el-button>
         </div>
+      </template>
+
+      <!-- 动态插槽 -->
+      <template
+        v-for="item in dynamicPropSlots"
+        :key="item.prop"
+        #[item.slotName]="scope"
+      >
+        <template v-if="item.slotName">
+          <slot :name="item.slotName" :row="scope.row"></slot>
+        </template>
       </template>
     </WrTabel>
   </div>
