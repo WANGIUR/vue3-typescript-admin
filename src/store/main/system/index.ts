@@ -4,26 +4,29 @@ import type { IRootType } from '@/store/type'
 import { getPageListData } from '@/service/main/system'
 
 const pageUrlMap = new Map([
-  ['user', '/users/list'],
+  ['users', '/users/list'],
   ['role', '/role/list'],
-  ['goods', '/goods/list']
+  ['goods', '/goods/list'],
+  ['menu', '/menu/list']
 ])
 
 const systemModule: Module<ISystemType, IRootType> = {
   namespaced: true,
   state() {
     return {
-      userList: [],
+      usersList: [],
       userCount: 0,
       roleList: [],
       roleCount: 0,
       goodsList: [],
-      goodsCount: 0
+      goodsCount: 0,
+      menuList: [],
+      menuCount: 0
     }
   },
   mutations: {
-    changeUserList(state, userList: any[]) {
-      state.userList = userList
+    changeUsersList(state, usersList: any[]) {
+      state.usersList = usersList
     },
     changeUserCount(state, userCount: number) {
       state.userCount = userCount
@@ -39,6 +42,12 @@ const systemModule: Module<ISystemType, IRootType> = {
     },
     changeGoodsCount(state, goodsCount: number) {
       state.goodsCount = goodsCount
+    },
+    changeMenuList(state, menuList: any[]) {
+      state.menuList = menuList
+    },
+    changeMenuCount(state, menuCount: number) {
+      state.menuCount = menuCount
     }
   },
   getters: {
@@ -62,8 +71,8 @@ const systemModule: Module<ISystemType, IRootType> = {
         const pageResult = await getPageListData(pageUrl, queryInfo)
         const { list, totalCount } = pageResult.data
         switch (pageName) {
-          case 'user':
-            commit('changeUserList', list)
+          case 'users':
+            commit('changeUsersList', list)
             commit('changeUserCount', totalCount)
             break
           case 'role':
@@ -73,6 +82,10 @@ const systemModule: Module<ISystemType, IRootType> = {
           case 'goods':
             commit('changeGoodsList', list)
             commit('changeGoodsCount', totalCount)
+            break
+          case 'menu':
+            commit('changeMenuList', list)
+            commit('changeMenuCount', totalCount)
             break
           default:
             break

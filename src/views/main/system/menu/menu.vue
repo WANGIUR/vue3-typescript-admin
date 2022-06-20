@@ -1,8 +1,11 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import PageContent from '@/views/main/components/page-content'
+import { contentTableConfig } from './config/content.config'
+</script>
 
 <template>
   <div class="menu">
-    <h2>menu</h2>
+    <PageContent :contentTableConfig="contentTableConfig" pageName="menu" />
   </div>
 </template>
 

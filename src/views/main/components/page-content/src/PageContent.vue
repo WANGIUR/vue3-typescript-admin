@@ -2,6 +2,7 @@
 import { computed, ref, watch } from 'vue'
 import WrTabel from '@/components/tabel'
 import { useStore } from '@/store'
+import { usePermission } from '@/hooks/usePermission'
 
 const store = useStore()
 const props = defineProps({
@@ -15,19 +16,23 @@ const props = defineProps({
   }
 })
 
+// 获取操作权限
+const isCreate = usePermission(props.pageName, 'create')
+const isUpdate = usePermission(props.pageName, 'update')
+const isDelete = usePermission(props.pageName, 'delete')
+const isQuery = usePermission(props.pageName, 'query')
+
 const pageInfo = ref({ pageSize: 10, currentPage: 1 })
 watch(pageInfo, () => {
   getPageData()
 })
 
 const getPageData = (queryInfo: any = {}) => {
+  if (!isQuery) return
   store.dispatch('system/getPageListAction', {
     pageName: props.pageName,
     queryInfo: {
-      offset:
-        pageInfo.value.currentPage === 1
-          ? pageInfo.value.currentPage - 1
-          : (pageInfo.value.currentPage - 1) * pageInfo.value.pageSize,
+      offset: (pageInfo.value.currentPage - 1) * pageInfo.value.pageSize,
       size: pageInfo.value.pageSize,
       ...queryInfo
     }
@@ -65,6 +70,11 @@ const dynamicPropSlots = props.contentTableConfig?.propList.filter(
   }
 )
 
+// 删除
+const handleDeleteClick = (row: any) => {
+  console.log(row)
+}
+
 defineExpose({
   getPageData
 })
@@ -81,6 +91,7 @@ defineExpose({
     >
       <template #handler>
         <el-button
+          v-if="isCreate"
           type="primary"
           size="small"
           @click="handleNewCreate"
@@ -95,10 +106,25 @@ defineExpose({
       <template #updateAt="scope">
         <span>{{ $filters.formatUTCT(scope.row.updateAt) }}</span>
       </template>
-      <template #operate>
+      <template #operate="scope">
         <div class="handle-btns">
-          <el-button link size="small" icon="Edit">编辑</el-button>
-          <el-button link size="small" icon="Delete">删除</el-button>
+          <el-button
+            v-if="isUpdate"
+            link
+            size="small"
+            icon="Edit"
+            type="primary"
+            >编辑</el-button
+          >
+          <el-button
+            v-if="isDelete"
+            link
+            size="small"
+            icon="Delete"
+            type="primary"
+            @click="handleDeleteClick(scope.row)"
+            >删除</el-button
+          >
         </div>
       </template>
 

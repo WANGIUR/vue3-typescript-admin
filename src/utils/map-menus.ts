@@ -3,6 +3,7 @@ import type { RouteRecordRaw } from 'vue-router'
 
 let firstMenu: any = null
 
+// 映射路由
 export function mapMenusToRoutes(userMenus: any[]): RouteRecordRaw[] {
   const routes: RouteRecordRaw[] = []
 
@@ -35,12 +36,14 @@ export function mapMenusToRoutes(userMenus: any[]): RouteRecordRaw[] {
   return routes
 }
 
+// 映射面包屑
 export function pathMapToBreadcrumbs(useMenus: any[], currentPath: string) {
   const breadcrumbs: IBreadcrumb[] = []
   pathMapToMenu(useMenus, currentPath, breadcrumbs)
   return breadcrumbs
 }
 
+// 映射菜单
 export function pathMapToMenu(
   useMenus: any[],
   currentPath: string,
@@ -60,6 +63,22 @@ export function pathMapToMenu(
       return menu
     }
   }
+}
+
+export function mapMenusToPermissions(userMenus: any[]) {
+  const permissions: string[] = []
+
+  const _recurseGetPermiistion = (menus: any[]) => {
+    for (const menu of menus) {
+      if (menu.type === 1 || menu.type === 2) {
+        _recurseGetPermiistion(menu.children ?? [])
+      } else if (menu.type === 3) {
+        permissions.push(menu.permission)
+      }
+    }
+  }
+  _recurseGetPermiistion(userMenus)
+  return permissions
 }
 
 export { firstMenu }

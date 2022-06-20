@@ -18,7 +18,7 @@ const [pageContentRef, resetBtnClick, searchBtnClick] = usePageSearch()
     <PageContent
       ref="pageContentRef"
       :contentTableConfig="contentTableConfig"
-      pageName="user"
+      pageName="users"
     >
       <template #enable="scope">
         <el-button
