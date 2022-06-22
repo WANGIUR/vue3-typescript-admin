@@ -10,7 +10,7 @@ const name = computed(() => store.state.login.userInfo.name)
 
 const handleSignOut = () => {
   localCache.removeCache('token')
-  router.push('/login')
+  router.push('/main')
 }
 </script>
 
