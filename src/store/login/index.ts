@@ -41,12 +41,15 @@ const loginModule: Module<ILoginType, IRootType> = {
     }
   },
   actions: {
-    async accountLoginAction({ commit }, payload: IAccount) {
+    async accountLoginAction({ commit, dispatch }, payload: IAccount) {
       // 实现登录逻辑
       const loginRes = await accountLoginRequest(payload)
       const { id, token } = loginRes.data
       commit('changeToken', token)
       localCache.setCache('token', token)
+
+      // 初始化部门和角色数据
+      dispatch('getInitialDataAction', null, { root: true })
 
       // 请求登录用户信息
       const userInfoRes = await requestUserInfoById(id)
@@ -68,10 +71,12 @@ const loginModule: Module<ILoginType, IRootType> = {
     //   console.log('payload', payload)
     // }
 
-    loadLocalLogin({ commit }) {
+    loadLocalLogin({ commit, dispatch }) {
       const token = localCache.getCache('token')
       if (token) {
         commit('changeToken', token)
+        // 初始化部门和角色数据
+        dispatch('getInitialDataAction', null, { root: true })
       }
       const userInfo = localCache.getCache('userInfo')
       if (userInfo) {
