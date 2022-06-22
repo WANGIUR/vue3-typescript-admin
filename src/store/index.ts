@@ -4,16 +4,41 @@ import login from './login'
 import system from './main/system'
 import product from './main/product'
 import type { IRootType, IStoreType } from './type'
+import { getPageListData } from '@/service/main/system'
 
 const store = createStore<IRootType>({
   state() {
     return {
-      test: ''
+      entireDepartment: [],
+      entireRole: []
     }
   },
   getters: {},
-  mutations: {},
-  actions: {},
+  mutations: {
+    changeEntireDepartment(state, list) {
+      state.entireDepartment = list
+    },
+    changeEntireRole(state, list) {
+      state.entireRole = list
+    }
+  },
+  actions: {
+    async getInitialDataAction({ commit }) {
+      //  请求部门和角色的数据
+      const departmentRes = await getPageListData('/department/list', {
+        offset: 0,
+        size: 500
+      })
+      const { list: departmentList } = departmentRes.data
+      const roleRes = await getPageListData('/role/list', {
+        offset: 0,
+        size: 500
+      })
+      const { list: roleList } = roleRes.data
+      commit('changeEntireDepartment', departmentList)
+      commit('changeEntireRole', roleList)
+    }
+  },
   modules: {
     login,
     system,
@@ -23,6 +48,7 @@ const store = createStore<IRootType>({
 
 export function setupStore() {
   store.dispatch('login/loadLocalLogin')
+  store.dispatch('getInitialDataAction')
 }
 
 export function useStore(): Store<IStoreType> {

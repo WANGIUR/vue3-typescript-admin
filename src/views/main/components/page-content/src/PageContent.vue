@@ -16,6 +16,8 @@ const props = defineProps({
   }
 })
 
+const emit = defineEmits(['newBtnClick', 'editBtnClick'])
+
 // 获取操作权限
 const isCreate = usePermission(props.pageName, 'create')
 const isUpdate = usePermission(props.pageName, 'update')
@@ -56,7 +58,7 @@ const selectionChange = (value: any) => {
 
 // 新增
 const handleNewCreate = () => {
-  console.log('handleAddUser')
+  emit('newBtnClick')
 }
 
 // 获取需要动态插槽的名称
@@ -69,6 +71,11 @@ const dynamicPropSlots = props.contentTableConfig?.propList.filter(
     return true
   }
 )
+
+// 编辑
+const handleEditClick = (row: any) => {
+  emit('editBtnClick', row)
+}
 
 // 删除
 const handleDeleteClick = (row: any) => {
@@ -117,6 +124,7 @@ defineExpose({
             size="small"
             icon="Edit"
             type="primary"
+            @click="handleEditClick(scope.row)"
             >编辑</el-button
           >
           <el-button

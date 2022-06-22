@@ -2,7 +2,8 @@ import { ILoginType } from './login/type'
 import { ISystemType } from './main/system/type'
 
 export interface IRootType {
-  test: string
+  entireDepartment: any[]
+  entireRole: any[]
 }
 
 export interface IRootWithModule {

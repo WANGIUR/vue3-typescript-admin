@@ -53,7 +53,11 @@ const handleValueChange = (newVal: any, field: string) => {
       <el-row>
         <template v-for="item in formItems" :key="item.label">
           <el-col v-bind="colLayout">
-            <el-form-item :label="item.label" :style="itemStyle">
+            <el-form-item
+              v-if="!item.isHidden"
+              :label="item.label"
+              :style="itemStyle"
+            >
               <template
                 v-if="item.type === 'input' || item.type === 'password'"
               >
