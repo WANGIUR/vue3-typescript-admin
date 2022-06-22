@@ -72,7 +72,10 @@ const dynamicPropSlots = props.contentTableConfig?.propList.filter(
 
 // 删除
 const handleDeleteClick = (row: any) => {
-  console.log(row)
+  store.dispatch('system/deletePageDataAction', {
+    pageName: props.pageName,
+    id: row.id
+  })
 }
 
 defineExpose({

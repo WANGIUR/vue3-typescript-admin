@@ -2,6 +2,7 @@ import type { Module } from 'vuex'
 import type { ISystemType } from './type'
 import type { IRootType } from '@/store/type'
 import { getPageListData } from '@/service/main/system'
+import { deletePageDataById } from '@/service/main/system'
 
 const pageUrlMap = new Map([
   ['users', '/users/list'],
@@ -15,7 +16,7 @@ const systemModule: Module<ISystemType, IRootType> = {
   state() {
     return {
       usersList: [],
-      userCount: 0,
+      usersCount: 0,
       roleList: [],
       roleCount: 0,
       goodsList: [],
@@ -28,8 +29,8 @@ const systemModule: Module<ISystemType, IRootType> = {
     changeUsersList(state, usersList: any[]) {
       state.usersList = usersList
     },
-    changeUserCount(state, userCount: number) {
-      state.userCount = userCount
+    changeUserCount(state, usersCount: number) {
+      state.usersCount = usersCount
     },
     changeRoleList(state, roleList: any[]) {
       state.roleList = roleList
@@ -91,6 +92,23 @@ const systemModule: Module<ISystemType, IRootType> = {
             break
         }
       }
+    },
+    async deletePageDataAction({ dispatch }, payload: any) {
+      console.log('first')
+      const { pageName, id } = payload
+      const pageUrl = `/${pageName}/${id}`
+      await deletePageDataById(pageUrl)
+      /**
+       * 待优化
+       * 查询状态删除数据需要获取到对应 queryInfo
+       */
+      dispatch('getPageListAction', {
+        pageName,
+        queryInfo: {
+          offset: 0,
+          size: 10
+        }
+      })
     }
   }
 }
