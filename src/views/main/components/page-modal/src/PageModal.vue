@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref, watch } from 'vue'
+import { ref, watch, computed } from 'vue'
 import { useStore } from '@/store'
 import WrForm from '@/components/form'
 
@@ -49,6 +49,12 @@ const handleConfirmClick = () => {
   }
 }
 
+const dynamicTitle = computed(() =>
+  Object.keys(props.defaultRowData).length
+    ? '编辑' + props.modalConfig.title
+    : '新建' + props.modalConfig.title
+)
+
 defineExpose({
   dialogVisible
 })
@@ -58,7 +64,7 @@ defineExpose({
   <div class="page-modal">
     <el-dialog
       v-model="dialogVisible"
-      title="新建用户"
+      :title="dynamicTitle"
       width="30%"
       destroy-on-close
     >

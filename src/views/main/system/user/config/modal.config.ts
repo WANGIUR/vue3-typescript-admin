@@ -1,6 +1,7 @@
 import { IForm } from '@/components/form'
 
 export const modalConfig: IForm = {
+  title: '用户',
   formItems: [
     {
       field: 'name',

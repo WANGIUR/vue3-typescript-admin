@@ -12,6 +12,7 @@ export interface IFormItem {
 }
 
 export interface IForm {
+  title?: string
   labelWidth?: string
   itemStyle?: any
   colLayout?: any
