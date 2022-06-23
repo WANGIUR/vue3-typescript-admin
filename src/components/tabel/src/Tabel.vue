@@ -83,7 +83,7 @@ const handleCurrentChange = (currentPage: number) => {
         label="序号"
         width="60"
       ></el-table-column>
-      <template v-for="propItem in propList" :key="propItem.prop">
+      <template v-for="propItem in (propList as any[])" :key="propItem.prop">
         <el-table-column v-bind="propItem" align="center" show-overflow-tooltip>
           <template #default="scope">
             <slot :name="propItem.slotName" :row="scope.row">
