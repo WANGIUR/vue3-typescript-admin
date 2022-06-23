@@ -52,20 +52,18 @@ const addressGoodsSale = computed(() => {
 
 <template>
   <div class="dashboard">
-    <el-row :gutter="10" class="second-row">
-      <el-col :span="24">
-        <WrCard title="不同城市商品销量">
-          <MapEchart :mapData="addressGoodsSale" />
-        </WrCard>
-      </el-col>
-    </el-row>
     <el-row :gutter="10">
-      <el-col :span="12">
+      <el-col :span="7">
         <WrCard title="分类商品数量(饼图)">
           <PieEchart :pieData="categoryGoodsCount" />
         </WrCard>
       </el-col>
-      <el-col :span="12">
+      <el-col :span="10">
+        <WrCard title="不同城市商品销量">
+          <MapEchart :mapData="addressGoodsSale" />
+        </WrCard>
+      </el-col>
+      <el-col :span="7">
         <WrCard title="分类商品数量(玫瑰图)">
           <RoseEchart :roseData="categoryGoodsCount" />
         </WrCard>

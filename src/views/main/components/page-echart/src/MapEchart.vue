@@ -41,7 +41,7 @@ const option = computed(() => {
     },
     geo: {
       map: 'china',
-      zoom: 4,
+      zoom: 1,
       roam: true,
       label: {
         show: false
