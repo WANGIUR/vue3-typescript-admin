@@ -15,13 +15,14 @@
   - [Prettier - Code formatter](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode)
   - [ESLint](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint)
 
-- About `git commit`
+- About `git commit`：
   - You should use `npx cz` 或 `npm run commit ` /  `yarn commit` instead of `git commit`
 
-### Thanks
+- You can **log in** using this account：
 
-- Backend API from [**coderwhy**](https://github.com/coderwhy) !
-- It is highly recommended that students who want to learn the **front end** or **programming** pay attention to him !
+  - Username: coderwhy
+
+  - Password: 123456
 
 ### Experience
 
@@ -49,10 +50,10 @@ yarn build
 yarn lint
 ```
 
-### Login CMS
+### Thanks
 
-- Username: **coderwhy**
-- Password:**123456**
+- Backend API from [**coderwhy**](https://github.com/coderwhy) !
+- It's highly recommended that students who want to learn the **front end** or **programming** pay attention to him !
 
 ### 
 
