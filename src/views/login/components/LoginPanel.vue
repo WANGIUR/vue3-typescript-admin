@@ -25,9 +25,10 @@ const handleLoginClick = () => {
 
 <template>
   <div class="login-panel">
-    <h1 class="title rainbow">
-      登录系统<el-icon><Platform /></el-icon>
-    </h1>
+    <div class="title rainbow">
+      Content Management
+      <h1>&nbsp;System</h1>
+    </div>
     <el-tabs type="border-card" class="demo-tabs" stretch v-model="curTab">
       <el-tab-pane name="account">
         <template #label>
