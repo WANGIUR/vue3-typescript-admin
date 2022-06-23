@@ -16,7 +16,7 @@
   - [ESLint](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint)
 
 - About `git commit`：
-  - You should use `npx cz` 或 `npm run commit ` /  `yarn commit` instead of `git commit`
+  - You should use `npx cz` or `npm run commit ` /  `yarn commit` instead of `git commit`
 
 - You can **log in** using this account：
 
