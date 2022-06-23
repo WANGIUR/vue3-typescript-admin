@@ -28,7 +28,6 @@ const handleLoginClick = () => {
     <h1 class="title rainbow">
       登录系统<el-icon><Platform /></el-icon>
     </h1>
-    <div class="default-account">账号: coderwhy 密码: 123456</div>
     <el-tabs type="border-card" class="demo-tabs" stretch v-model="curTab">
       <el-tab-pane name="account">
         <template #label>

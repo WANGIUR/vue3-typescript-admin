@@ -1,9 +1,7 @@
 <script setup lang="ts"></script>
 
 <template>
-  <div class="overview">
-    <h2>overview</h2>
-  </div>
+  <div class="overview"></div>
 </template>
 
 <style lang="less" scoped></style>
