@@ -12,6 +12,10 @@ const props = defineProps({
     type: Object,
     default: () => ({})
   },
+  otherData: {
+    type: Object,
+    default: () => ({})
+  },
   pageName: {
     type: String,
     required: true
@@ -37,14 +41,14 @@ const handleConfirmClick = () => {
     // 编辑
     store.dispatch('system/editPageDataAction', {
       pageName: props.pageName,
-      editData: { ...formData.value },
+      editData: { ...formData.value, ...props.otherData },
       id: props.defaultRowData.id
     })
   } else {
     // 新建
     store.dispatch('system/createPageDataAction', {
       pageName: props.pageName,
-      newData: { ...formData.value }
+      newData: { ...formData.value, ...props.otherData }
     })
   }
 }
@@ -69,6 +73,7 @@ defineExpose({
       destroy-on-close
     >
       <WrForm v-bind="modalConfig" v-model="formData" />
+      <slot></slot>
       <template #footer>
         <span class="dialog-footer">
           <el-button @click="dialogVisible = false" size="small">

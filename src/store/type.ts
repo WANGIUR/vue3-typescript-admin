@@ -4,6 +4,7 @@ import { ISystemType } from './main/system/type'
 export interface IRootType {
   entireDepartment: any[]
   entireRole: any[]
+  entireMenu: any[]
 }
 
 export interface IRootWithModule {
