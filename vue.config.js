@@ -5,7 +5,7 @@ const { ElementPlusResolver } = require('unplugin-vue-components/resolvers')
 
 module.exports = defineConfig({
   transpileDependencies: true,
-  publicPath: process.env.NODE_ENV === 'production' ? '/my-repo/' : '/',
+  publicPath: process.env.NODE_ENV === 'production' ? '/vue3-cms/' : '/',
 
   configureWebpack: {
     devServer: {
