@@ -66,6 +66,7 @@ const foldChange = (isFold: boolean) => {
       background-color: #f0f2f5;
 
       &_info {
+        height: 100%;
         background-color: #fff;
         border-radius: 4px;
       }

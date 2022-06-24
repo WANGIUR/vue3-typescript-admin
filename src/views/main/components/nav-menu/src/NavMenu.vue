@@ -32,7 +32,7 @@ const handleMenuitemClick = (item: any) => {
   <div class="nav-menu">
     <div class="logo">
       <img class="img" src="~@/assets/images/logo.png" alt="logo" />
-      <span class="title" v-if="!collapse">Vue3&TS</span>
+      <span class="title" v-if="!collapse">Vue3+TS</span>
     </div>
     <el-menu
       :default-active="defaultActive"
