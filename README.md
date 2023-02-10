@@ -1,63 +1,47 @@
-# <h1 align="center">🎉 vue3-typescript-admin</h1>
+# <h1 align="left"> vue3-typescript-admin</h1>
 
-> A lightweight CMS, for learning Vue3、Composition API and TypeScript💪 
+> A lightweight admin, for learning Vue3、Composition API 、 TypeScript 
 
-### Features
+`Vue3` `Composition API` `<script setup>` `TypeScript` `Element+`
 
-- Based on Vue3.2 and TypeScript
-- All composition using `<script setup>`
-- Integrated Vue Router、 Vuex、Element+、Echarts etc
+### Plugins
 
-### Declaration
+If you use [VS Code](https://code.visualstudio.com/)，please install the following plugins：
+- [EditorConfig for VS Code](https://marketplace.visualstudio.com/items?itemName=EditorConfig.EditorConfig)
+- [Prettier - Code formatter](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode)
+- [ESLint](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint)
 
-- If you use [VS Code](https://code.visualstudio.com/)，please install the following plugins：
-  - [EditorConfig for VS Code](https://marketplace.visualstudio.com/items?itemName=EditorConfig.EditorConfig)
-  - [Prettier - Code formatter](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode)
-  - [ESLint](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint)
+### **Account**
 
-- About `git commit`：
-  - You should use `npx cz` or `npm run commit ` /  `yarn commit` instead of `git commit`
-
-- You can **log in** using this account：
-
-  - Username: coderwhy
-
-  - Password: 123456
-
-### Experience
-
-#### Install
-
-````
-yarn install
+````js
+// username: coderwhy
+// password: 123456
 ````
 
-#### Serve
+### Install
 
+````js
+# 安装依赖
+$ yarn install
+
+# 本地运行
+$ yarn serve
+
+# 打包
+$ yarn build
+
+# 检测
+$ yarn lint
 ````
-yarn serve
-````
 
-#### Build
+**About** `git commit`：
 
-```
-yarn build
-```
-
-#### Lints
-
-```
-yarn lint
-```
+You should use `npx cz` or `npm run commit ` /  `yarn commit` instead of `git commit`
 
 ### Thanks
 
-- Backend API from [**coderwhy**](https://github.com/coderwhy) !
-- It's highly recommended that students who want to learn the **front end** or **programming** pay attention to him !
+Service API from [**coderwhy**](https://github.com/coderwhy) !
 
-### 
+It's highly recommended that students who want to learn the **front end** or **programming** pay attention to him !
 
-<p align="center">Author: Jeff, 281413395</p>
-
-<p align="center">Welcome to communicate with us, make progress together !⛽️</p>
-
+Author: Gerry 281413395, make progress together⛽️
