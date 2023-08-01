@@ -2,6 +2,8 @@
   "name": "vue3-typescript-admin",
   "version": "0.1.0",
   "private": true,
+  "author": "wangrui",
+  "license": "MIT",
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
