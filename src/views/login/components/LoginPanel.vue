@@ -26,8 +26,7 @@ const handleLoginClick = () => {
 <template>
   <div class="login-panel">
     <div class="title rainbow">
-      Content Management
-      <h1>&nbsp;System</h1>
+      <h1>vue3-typescript-admin</h1>
     </div>
     <el-tabs type="border-card" class="demo-tabs" stretch v-model="curTab">
       <el-tab-pane name="account">
