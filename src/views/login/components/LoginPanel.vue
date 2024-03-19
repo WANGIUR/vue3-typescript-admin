@@ -25,9 +25,7 @@ const handleLoginClick = () => {
 
 <template>
   <div class="login-panel">
-    <div class="title rainbow">
-      <h1>vue3-typescript-admin</h1>
-    </div>
+    <h1 class="title rainbow">vue3-typescript-admin</h1>
     <el-tabs type="border-card" class="demo-tabs" stretch v-model="curTab">
       <el-tab-pane name="account">
         <template #label>
@@ -64,7 +62,7 @@ const handleLoginClick = () => {
   margin-bottom: 240px;
 
   .title {
-    margin-bottom: 0;
+    margin-bottom: 10px;
     display: flex;
     justify-content: center;
     align-items: center;
