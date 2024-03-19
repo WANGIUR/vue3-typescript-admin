@@ -7,8 +7,8 @@ import type { FormInstance } from 'element-plus'
 
 const store = useStore()
 const account = reactive({
-  name: localCache.getCache('name') ?? '',
-  password: localCache.getCache('password') ?? ''
+  name: localCache.getCache('name') ?? 'coderwhy',
+  password: localCache.getCache('password') ?? '123456'
 })
 const rules = reactive(loginAccRules)
 const ruleFormRef = ref<FormInstance>()
